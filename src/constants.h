@@ -1,3 +1,5 @@
+#include <stdexcept>
+
 
 /*!
   Une classe pour lancer les erreurs dans le programme.
@@ -13,14 +15,14 @@ public:
     int value() const {return code;}
     
 protected:
-    const int code
+    const int code;
 };
 
 
 /// * valeurs pas défaut des paramètres *
 #define _TEMPS_DEFAUT_ 10
 #define _N_DEFAUT_ 100
-#define _PROPORTIONS_DEFAUT_"RS:0,8, FS:0,2"
+#define _PROPORTIONS_DEFAUT_ "RS:0,8, FS:0,2"
 
 /// * messages *
 #define _PRGRM_TEXTE_ "Simulation du réseau de neurones"

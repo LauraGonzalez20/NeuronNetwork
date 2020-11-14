@@ -25,10 +25,6 @@ Simulation::Simulation(int argc, char **argv) {
     } catch(TCLAP::ArgException &e) {
 		std::cerr<<"Error: " + e.error() + " " + e.argId()));
     }
-    
-    
-    //Juste pour pour tester cette partie
-    std::cout<<" Le temps choisi est "<<temps.getValue()<<" , le nombre de neurones est "<<nb_neur.getValue()<<" et les proportions sont "<<proportions.getValue()<<std::endl;
 }
 
 
