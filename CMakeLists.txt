@@ -11,7 +11,7 @@ set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 include_directories("/usr/local/include" ${CMAKE_SOURCE_DIR}/include)
 link_directories(${CMAKE_SOURCE_DIR}/lib)
 
-add_executable(Neurons src/main.cpp src/Random.cpp src/NeuronNetwork.cpp src/Neurone.cpp src/Simulation.cpp)
+add_executable(Neurons src/main.cpp src/Random.cpp src/NeuroneNetwork.cpp src/Neurone.cpp src/Simulation.cpp)
 
 find_package(Doxygen)
 if (DOXYGEN_FOUND)
