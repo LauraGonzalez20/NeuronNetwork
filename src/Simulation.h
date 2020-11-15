@@ -1,4 +1,7 @@
+#pragma once
 #include "Random.h"
+#include "Neurone.h"
+#include "NeuroneNetwork.h"
 
 
 class Simulation
@@ -25,7 +28,7 @@ Simulation(int argc, char** argv);
 /*! These methods are used to create and add_neurons to the colection of neuron
  */
 ///@{
-void add_neurons(size_t N, std::string name); 
+void add_neurons(size_t N, std::string name); // N: nb neurones  name: RS/FS/...
 void add_neurons(size_t N, double a, double b, double c, double d, bool inhib, bool firing, double v, double u);
 void add_neuron(double a, double b, double c, double d, bool inhib, bool firing, double v, double u);
 ///@}
@@ -40,18 +43,14 @@ void run(double time, double next_t);
 void print();
 ///@}
 
-std::vector<Neurons*>& getNeurons();  //retourne vecteur de neurones
-Neuron& getNeuron(int id);
+std::vector<Neurone*>& getNeurons();  //retourne vecteur de neurones
+Neurone& getNeuron(int id);
 
 
 private:
 
-NeuronNetwork network;
-std::vector<Neurons*> neurons;
+NeuroneNetwork* network_;
+std::vector<Neurone*> neurons_;
 double _time, delta_t, next_t, _last;
-
-
-
-
 
 };
