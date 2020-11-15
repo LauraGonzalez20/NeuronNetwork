@@ -2,6 +2,7 @@
 #define NEURONE_H
 
 #include "Random.h"
+#include <string>
 
 /*!
  * La classe Neurone permet de créer un neurone. 
@@ -11,6 +12,7 @@
  * -v : son potentiel de membrane
  * -u : la variable de relaxation
  * -un identifiant : un entier qui permet d'identifier le neuronne
+ * -Le type du neuronne : RS, FS, IB, CH, LTS
  */
 
 class Neurone{
@@ -21,10 +23,11 @@ public :
  * - un identifiant
  * @param _q : la qualité
  * @param _id : l'identifiant
+ * @param _type le type du neuronne
  * -Le constructeur du Neurone va ensuite initialiser tous les attributs restant 
  */
 ///@{ 
-	Neurone(bool _q, int _id) : firing(false), v(-65) {/*! temporaire :assigner a,b,c,d et u dans .cpp ici*/};
+	Neurone(bool _q, int _id, std::string _type ) : firing(false), v(-65) {/*! temporaire :assigner a,b,c,d et u dans .cpp ici*/};
 	~Neurone();
 ///@}
 
