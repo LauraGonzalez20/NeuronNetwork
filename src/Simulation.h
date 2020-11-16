@@ -1,13 +1,11 @@
 #pragma once
 #include "Random.h"
-#include "Neurone.h"
-#include "NeuroneNetwork.h"
+#include "Neuron.h"
+#include "NeuronNetwork.h"
 
 
 class Simulation
 {
-
-
 /*!
   The Simulation class is the main class in this program. It constructs the chemical \ref System according to user-specified parameters, and @ref run "runs" the simulation.
 
@@ -23,7 +21,7 @@ public:
 
 Simulation();
 Simulation(int argc, char** argv);
-~Simulation;
+//~Simulation;
 
 /*! These methods are used to create and add_neurons to the colection of neuron
  */
@@ -43,14 +41,14 @@ void run(double time, double next_t);
 void print();
 ///@}
 
-std::vector<Neurone*>& getNeurons();  //retourne vecteur de neurones
-Neurone& getNeuron(int id);
+std::vector<Neuron*>& getNeurons();  //retourne vecteur de neurones
+Neuron& getNeuron(int id);
 
 
 private:
 
-NeuroneNetwork* network_;
-std::vector<Neurone*> neurons_;
+NeuronNetwork* network_;
+std::vector<Neuron*> neurons_;
 double _time, delta_t, next_t, _last;
 
 };
