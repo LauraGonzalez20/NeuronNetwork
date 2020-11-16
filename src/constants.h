@@ -1,3 +1,4 @@
+#pragma once
 #include <stdexcept>
 
 
@@ -23,7 +24,7 @@ protected:
 #define _TEMPS_DEFAUT_ 10
 #define _N_DEFAUT_ 100
 #define _PROPORTIONS_DEFAUT_ "RS:0,8, FS:0,2"
-#define _P_EXCIT_DEFAUT_ 0,8
+#define _P_EXCIT_DEFAUT_ 0.8
 #define _CONN_MOY_DEFAUT_ 1 //?
 #define _INTENSITE_CONN_DEFAUT_ 1 //?
 
