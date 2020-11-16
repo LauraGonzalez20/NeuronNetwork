@@ -49,6 +49,7 @@ private :
 	int  id;
 	double v;
 	double  u;
+	std::string type;
 	
 
 };
