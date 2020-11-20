@@ -1,4 +1,3 @@
-#include <iostream>
 #include "Random.h"
 
 Random::Random() 
