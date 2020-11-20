@@ -8,36 +8,30 @@ class NeuronNetwork
 {
 
 /*!
- * The NeuroneNetwork class consists to assemble Neurones interacting with each others. It constructs the network with a given set of Neurones \ref Neurone and the link force \L_. The links are created with the variable \lambda randomly. This class will then store the data about the links properties to help computations made in the simulation.
- * Computations on the Neurones themselves will be performed with the help of the \ref getNeurone method which will get the set of Neurones from the simulation.
- * 
+ * La classe NeuronNetwork consiste à assembler des Neuron interagissant entre eux.
+ * Le réseau de neurones a comme paramètres un tableau de Neuron, une connectivité moyenne /lambda_ et une intensité moyenne de connection /L_. Cette classe permet de creer le réseau de neurones et de calculer le courant synaptique d'un neurone en particulier.
+ * Les manipulations des neurones se font grâce à la méthode \ref getNeurons qui va chercher le tableau de neurones dans la Simulation.
 */
 
 public:
 
-NeuronNetwork();
-NeuronNetwork(std::vector<Neuron*>& neurons, double lambda, double L); //pour construire un réseau de neurones à partir d'un vec
-~NeuronNetwork();
+    NeuronNetwork();
+    NeuronNetwork(std::vector<Neuron*>& neurons, double lambda, double L); //pour construire un réseau de neurones à partir d'un vec
+    ~NeuronNetwork();
+
+    
+    void getPot(int id); //retourne le potentiel d'un neurone avec un id
+    void getRelax(int id);  //retourne la relaxation d'un neurone avec un id
+
+    Neuron& getNeuron(int id); //récupère un neurone avec un id donné
 
 
-double getTotalLinkPower(int id) const; //calcule pour un id de neurone son I(t)
-void getPot(int id); //retourne le potentiel d'un neurone avec un id
-void getRelax(int id);  //retourne la relaxation d'un neurone avec un id
-
-Neuron& getNeuron(int id); //récupère un neurone avec un id donné
-
+    
+    void set_connections(); // création aléatoires des connections de chaque neurone du NeuronNetwork
+    double I(Neuron& n); //calcule l'I(t) d'un neurone
 
 private:
-
-void initId();
-double computeLink();  //calcule intensité d'un lien
-int createLink();	//initialise links_
-
-
-std::unordered_map<int, std::unordered_map<int, int>> links_;  //numéro de neurone : id du neurone connecté, avec intensité du lien
-double lambda_;
-double L_;
-
-
+    double lambda_;
+    double L_;
 
 };
