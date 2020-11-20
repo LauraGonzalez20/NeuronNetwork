@@ -21,7 +21,7 @@ public:
 
 Simulation();
 Simulation(int argc, char** argv);
-//~Simulation;
+~Simulation();
 
 /*! These methods are used to create and add_neurons to the colection of neuron
  */
@@ -33,6 +33,7 @@ void add_neuron(double a, double b, double c, double d, bool inhib, bool firing,
 
 
 double eqDiffSolver(double u, double v, double t);
+double eqDiffSolverV(double u, double v, int a, int b);
 
 /*! The simulation is made by calling run and print
  */
@@ -48,6 +49,7 @@ Neuron& getNeuron(int id);
 double getDelta() const;
 
 private:
+void testlireproportions(std::string);
 
 NeuronNetwork* network_;
 std::vector<Neuron*> neurons_;
@@ -55,5 +57,7 @@ double _time, delta_t_, last_t, next_t_, _time_lim;
 std::ofstream outfile_;   //fichier de sortie
 std::vector<std::vector<int>> result_;
 
-
 };
+
+
+
