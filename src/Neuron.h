@@ -1,7 +1,6 @@
 #ifndef NEURONE_H
 #define NEURONE_H
 
-#pragma once
 #include "Random.h"
 #include <string>
 
@@ -13,7 +12,7 @@
  * -v : son potentiel de membrane
  * -u : la variable de relaxation
  * -un identifiant : un entier qui permet d'identifier le neuronne
- * -Le type du neuronne : RS, FS, IB, CH, LTS
+ * -Les types de neuronnes : RS, FS, IB, CH, LTS
  */
 
 class Neuron{
@@ -28,7 +27,7 @@ public :
  * -Le constructeur du Neurone va ensuite initialiser tous les attributs restant 
  */
 ///@{ 
-	Neuron(bool _q, int _id, std::string _type ) : firing(false), v(-65) {/*! temporaire :assigner a,b,c,d et u dans .cpp ici*/};
+	Neuron(bool _q, int _id, std::string _type );
 	~Neuron();
 ///@}
 
@@ -38,21 +37,20 @@ public :
 	void setFiring(bool _f);
 	void setPotentiel(double _v);
 	void setRelaxation(double _u);
+	bool isFiring();	
 ///@}
 	
 private :
+	bool qualite;
+	int  id;
+	std::string type;
+	bool firing;
+	double v;
 	double a;
 	double b;
 	double c;
 	double d;
-	bool qualite;
-	bool firing;
-	int  id;
-	double v;
 	double  u;
-	std::string type;
-	
-
 };
 	
 #endif	
