@@ -89,4 +89,34 @@ void NeuronNetwork::getRelax(int id) {
 }
 
 
+double NeuronNetwork::eqDiffSolverV(double u, double v, double I, double delta_t)
+{
+    return v + (0.04*std::pow(v,2)  + 5*v +140 -u + I)*delta_t;
+}
 
+double NeuronNetwork::eqDiffSolverU(double u, double v, int a, int b, double delta_t)
+{
+  return u + a*(b*v-u)*2*delta_t;
+}
+
+
+void NeuronNetwork::update(t, last_t, delta_t, delta_t_U)
+{
+
+if((t-last_t) >= delta_t){   //si delta_t = 1/2
+    //update voltage
+
+//itération réseau de neurones
+   //getNeuron(id).setPotentiel(eqDiffSolver(getNeuron(id).getU, getNeuron(id).getPotentiel, I(getNeuron(id), delta_t))); //new potentiel
+
+}
+if(deltat_t_U >= 2*delta_t){ //si delta_t = 1
+    //update U
+//itération réseau de neurone
+    //getNeuron(id).setRelaxation(eqDiffSolverU(getNeuron(id).getU, getNeuron(id).getPotentiel, getNeuron(id).getA(), getNeuron(id).getB(), delta_t));
+}
+
+
+
+return;
+}

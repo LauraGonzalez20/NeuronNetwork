@@ -30,6 +30,10 @@ public:
     void set_connections(); // création aléatoires des connections de chaque neurone du NeuronNetwork
     double I(Neuron& n); //calcule l'I(t) d'un neurone
 
+    double NeuronNetwork::eqDiffSolverV(double u, double v, double I);
+    double NeuronNetwork::eqDiffSolverU(double u, double v, int a, int b) ;
+    void update(t, last_t, delta_t, delta_t_U);   //update le réseau et calcule toutes les nouvelles valeurs
+
 private:
     double lambda_;
     double L_;
