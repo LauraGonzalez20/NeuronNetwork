@@ -37,18 +37,23 @@ double eqDiffSolver(double u, double v, double t);
 /*! The simulation is made by calling run and print
  */
 ///@{
-void run(double time, double next_t);
-void print();
+void run();
+void print(int j);
+void update(double t);
 ///@}
 
 std::vector<Neuron*>& getNeurons();  //retourne vecteur de neurones
 Neuron& getNeuron(int id);
 
+double getDelta() const;
 
 private:
 
 NeuronNetwork* network_;
 std::vector<Neuron*> neurons_;
-double _time, delta_t, next_t, _last;
+double _time, delta_t_, last_t, next_t_, _time_lim;
+std::ofstream outfile_;   //fichier de sortie
+std::vector<std::vector<int>> result_;
+
 
 };

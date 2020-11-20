@@ -49,3 +49,64 @@ Simulation::Simulation(int argc, char **argv) {
 }
 
 
+
+Simulation::~Simulation()
+{
+    delete network_;
+    for(auto& n : neurons_) delete n;
+    outfile_.close();
+}
+
+
+void Simulation::run()
+{
+    int j(0);
+    int delta_t_U(0);
+    while(_time<_time_lim){
+
+        if( (_time-last_t>=2*delta_t_) or (_time==0)) print(j); ++j;  //on affiche toutes les 1 secondes;
+
+        network_->update(_time, last_t, delta_t_, delta_t_U);
+
+        last_t=_time;
+        _time+=delta_t_;
+    }
+
+}
+
+
+
+
+double Simulation::eqDiffSolver(double u, double v, double I)
+{
+    return v + (0.04*std::pow(v,2)  + 5*v +140 -u + I)*delta_t_;
+}
+
+double Simulation::eqDiffSolverV(double u, double v, int a, int b)
+{
+    return u + a*(b*v-u)*delta_t_;
+}
+
+
+void Simulation::print(int j)
+{
+    for(int i(0); i<neurons_.size(); ++i);
+        result_[j][i]=neurons_[i]->isFiring();
+
+    std::ostream *outstr = &std::cout;
+    if(outfile_.is_open()) outstr = &outfile_;
+    for(int i(0); i<result_.size(); ++i){
+        for(int j(0); j<i; ++j){
+            *outstr << result_[i][j];
+        }
+        *outstr << &std::endl;
+    }
+
+
+}
+
+
+double Simulation::getDelta() const
+{
+    return delta_t_;
+}
